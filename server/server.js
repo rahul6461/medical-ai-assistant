@@ -7,7 +7,11 @@ import reportRoutes from './routes/reportRoutes.js';
 dotenv.config();
 
 // Connect DB
-connectDB();
+if (process.env.MONGO_URI) {
+  connectDB();
+} else {
+  console.log("MongoDB not connected (no URI provided)");
+}
 
 const app=express();
 
